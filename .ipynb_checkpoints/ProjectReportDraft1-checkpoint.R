@@ -78,6 +78,11 @@ summary(benzFit1) # print linear regression fit statistics
 
 
 ## -----------------------------------------------------------------------------
+vifBenz <- vif(benzFit1)
+vifBenz
+
+
+## -----------------------------------------------------------------------------
 options(repr.plot.width = 6, repr.plot.height = 5)
 plot(fitted(benzFit1), resid(benzFit1), main = "Residual Plot with Fitted Values", xlab = "Fitted Values", ylab = "Residuals") # plot fitted values and residuals
 abline(0,0)                                                                         # add horizontal line at 0 
@@ -85,4 +90,5 @@ abline(0,0)                                                                     
 
 ## -----------------------------------------------------------------------------
 rmarkdown::convert_ipynb("ProjectReportDraft1.ipynb")
+knitr::purl("ProjectReportDraft1.Rmd")
 

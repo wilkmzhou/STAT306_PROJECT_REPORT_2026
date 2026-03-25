@@ -91,6 +91,13 @@ benzFit1 <- lm(Price_USD ~ ., data = benzData) # fit linear regression model wit
 summary(benzFit1) # print linear regression fit statistics
 ```
 
+### Check VIF of Linear Regression Model 
+
+```{r}
+vifBenz <- vif(benzFit1)
+vifBenz
+```
+
 ### Residuals and Fitted Values Scatterplot
 
 ```{r}
@@ -101,5 +108,6 @@ abline(0,0)                                                                     
 
 ```{r}
 rmarkdown::convert_ipynb("ProjectReportDraft1.ipynb")
+knitr::purl("ProjectReportDraft1.Rmd")
 ```
 
