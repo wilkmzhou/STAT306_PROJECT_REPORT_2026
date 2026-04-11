@@ -108,6 +108,9 @@ abline(0,0)                                                                     
 
 ```{r}
 rmarkdown::convert_ipynb("ProjectReportDraft1.ipynb")
+```
+
+```{r}
 knitr::purl("ProjectReportDraft1.Rmd")
 ```
 
