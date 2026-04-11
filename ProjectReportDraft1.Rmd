@@ -107,6 +107,18 @@ abline(0,0)                                                                     
 ```
 
 ```{r}
+benzFit2 <- lm(Price_USD ~ . -Trim_Level, data = benzData)
+
+summary(benzFit2)
+```
+
+```{r}
+vifBenzFit2 <- vif(benzFit2)
+
+vifBenzFit2
+```
+
+```{r}
 rmarkdown::convert_ipynb("ProjectReportDraft1.ipynb")
 ```
 
