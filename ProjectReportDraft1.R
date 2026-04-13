@@ -84,7 +84,7 @@ vifBenz
 
 ## -----------------------------------------------------------------------------
 options(repr.plot.width = 6, repr.plot.height = 5)
-plot(fitted(benzFit1), resid(benzFit1), main = "Residual Plot with Fitted Values", xlab = "Fitted Values", ylab = "Residuals") # plot fitted values and residuals
+plot(fitted(benzFit1), resid(benzFit1), main = "Residual Plot with Fitted Values from Fit1", xlab = "Fitted Values", ylab = "Residuals") # plot fitted values and residuals
 abline(0,0)                                                                         # add horizontal line at 0 
 
 
@@ -98,6 +98,28 @@ summary(benzFit2)
 vifBenzFit2 <- vif(benzFit2)
 
 vifBenzFit2
+
+
+## -----------------------------------------------------------------------------
+plot(fitted(benzFit2), resid(benzFit2), main = "Residual Plot with Fitted Values from Fit 2", xlab = "Fitted Values", ylab = "Resdiuals") # plot residuals and fitted values 
+abline(0,0)
+
+
+## -----------------------------------------------------------------------------
+benzFit3 <- lm(log(Price_USD) ~ log(Vehicle_Age) + log(Mileage_Miles) + Body_Type + Is_4MATIC, data = benzData)
+
+summary(benzFit3)
+
+
+## -----------------------------------------------------------------------------
+vifBenzFit3 <- vif(benzFit3)
+
+vifBenzFit3
+
+
+## -----------------------------------------------------------------------------
+plot(fitted(benzFit3), resid(benzFit3), main = "Residual Plot with Fitted Values from Fit 3", xlab = "Fitted Values", ylab = "Resdiuals") # plot residuals and fitted values 
+abline(0,0)
 
 
 ## -----------------------------------------------------------------------------

@@ -19,6 +19,8 @@ benzDataRaw <- read.csv(dataset_url)
 head(benzDataRaw, n = 3)
 ```
 
+### Printing Dataset
+
 ```{r}
 benzData <- benzDataRaw |> 
     na.omit() |>                                                                                              # remove any NA rows 
@@ -26,8 +28,9 @@ benzData <- benzDataRaw |>
 head(benzData, n = 3)
 ```
 
-## Exploratory Data Analysis
-### Numerical Variables
+# Exploratory Data Analysis
+## Numerical Variables
+### Correlation Plot
 
 ```{r}
 benzDataInt <- benzData |>
@@ -55,6 +58,8 @@ benzBodyBoxplot <- benzDataCat |>
 benzBodyBoxplot
 ```
 
+### Boxplot of Price in USD and Trim Level (no longer needed)
+
 ```{r}
 options(repr.plot.height = 6, repr.plot.width = 15)
 benzDataCat$Trim_Level <- factor(benzDataCat$Trim_Level)
@@ -67,6 +72,8 @@ benzTrimBoxplot <- benzDataCat |>
     scale_x_discrete(breaks = levels(benzDataCat$Trim_Level)[seq(1, 29, by = 2)]) # show x-axis indices every two categories
 benzTrimBoxplot
 ```
+
+### Boxplot of Price in USD and vehicle being 4MATIC (no longer needed)
 
 ```{r}
 options(repr.plot.width = 6, repr.plot.height = 5)
@@ -83,7 +90,7 @@ benz4MATICBoxplot <- benzDataCat |>
 benz4MATICBoxplot
 ```
 
-### Fitting Linear Regression Model
+### Fitting Linear Regression Model (no longer needed)
 
 ```{r}
 benzFit1 <- lm(Price_USD ~ ., data = benzData) # fit linear regression model with all variables in filtered dataset
@@ -91,7 +98,7 @@ benzFit1 <- lm(Price_USD ~ ., data = benzData) # fit linear regression model wit
 summary(benzFit1) # print linear regression fit statistics
 ```
 
-### Check VIF of Linear Regression Model 
+### Check VIF of Linear Regression Model (no longer needed)
 
 ```{r}
 vifBenz <- vif(benzFit1)
@@ -102,7 +109,7 @@ vifBenz
 
 ```{r}
 options(repr.plot.width = 6, repr.plot.height = 5)
-plot(fitted(benzFit1), resid(benzFit1), main = "Residual Plot with Fitted Values", xlab = "Fitted Values", ylab = "Residuals") # plot fitted values and residuals
+plot(fitted(benzFit1), resid(benzFit1), main = "Residual Plot with Fitted Values from Fit1", xlab = "Fitted Values", ylab = "Residuals") # plot fitted values and residuals
 abline(0,0)                                                                         # add horizontal line at 0 
 ```
 
@@ -116,6 +123,28 @@ summary(benzFit2)
 vifBenzFit2 <- vif(benzFit2)
 
 vifBenzFit2
+```
+
+```{r}
+plot(fitted(benzFit2), resid(benzFit2), main = "Residual Plot with Fitted Values from Fit 2", xlab = "Fitted Values", ylab = "Resdiuals") # plot residuals and fitted values 
+abline(0,0)
+```
+
+```{r}
+benzFit3 <- lm(log(Price_USD) ~ log(Vehicle_Age) + log(Mileage_Miles) + Body_Type + Is_4MATIC, data = benzData)
+
+summary(benzFit3)
+```
+
+```{r}
+vifBenzFit3 <- vif(benzFit3)
+
+vifBenzFit3
+```
+
+```{r}
+plot(fitted(benzFit3), resid(benzFit3), main = "Residual Plot with Fitted Values from Fit 3", xlab = "Fitted Values", ylab = "Resdiuals") # plot residuals and fitted values 
+abline(0,0)
 ```
 
 ```{r}
