@@ -115,15 +115,15 @@ vifBenzFit2
 resFit1 <- resid(benzFit1)
 resFit2 <- resid(benzFit2)
 
-qqnorm(resFit2) # display QQ plot of linear regression with transformed variables 
+qqnorm(resFit2) # display QQ plot of linear regression with 
 qqline(resFit2)
 
-qqnorm(resFit1) # display QQ plot of linear regression with no transformed variables
+qqnorm(resFit1)
 qqline(resFit1)
 ```
 
 ```{r}
-rmarkdown::convert_ipynb("Stage2ProjectReport.ipynb") 
+rmarkdown::convert_ipynb("Stage2ProjectReport.ipynb")
 ```
 
 ```{r}
